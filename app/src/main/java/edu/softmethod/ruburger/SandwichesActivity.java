@@ -25,6 +25,13 @@ import edu.softmethod.ruburger.model.AddOns;
 import edu.softmethod.ruburger.model.Sandwich;
 import edu.softmethod.ruburger.model.OrderManager;
 
+/**
+ * Activity for customizing and ordering a sandwich.
+ * Allows users to select bread type, protein, add-ons, quantity, and calculates the total price.
+ * Also offers an option to upgrade the sandwich into a combo meal.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
+ */
 public class SandwichesActivity extends AppCompatActivity {
     private static final String TAG = "SandwichesActivity";
     public static final String EXTRA_SANDWICH = "edu.softmethod.ruburger.SANDWICH";
@@ -36,12 +43,18 @@ public class SandwichesActivity extends AppCompatActivity {
     private EditText priceEditText;
     private Button addToOrderButton, comboButton, mainMenuButton;
 
+    /**
+     * Called when the activity is starting.
+     * Sets up the UI components, listeners, and default values.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandwiches);
 
-        // 1) bind views
+        // 1) Bind views
         breadSpinner       = findViewById(R.id.spinner_bread);
         quantitySpinner    = findViewById(R.id.spinner_quantity_sandwich);
         proteinGroup       = findViewById(R.id.radioGroup_protein);
@@ -58,7 +71,7 @@ public class SandwichesActivity extends AppCompatActivity {
         comboButton        = findViewById(R.id.button_combo_sandwich);
         mainMenuButton     = findViewById(R.id.button_main_menu);
 
-        // 2) set up adapters
+        // 2) Setup adapters
         ArrayAdapter<CharSequence> breadAdapter = ArrayAdapter.createFromResource(
                 this, R.array.sandwich_bread_options, android.R.layout.simple_spinner_item);
         breadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,12 +82,12 @@ public class SandwichesActivity extends AppCompatActivity {
                 this, R.array.quantity_options, android.R.layout.simple_spinner_item);
         qtyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quantitySpinner.setAdapter(qtyAdapter);
-        quantitySpinner.setSelection(0); // ensure default = "1"
+        quantitySpinner.setSelection(0);
 
-        // default protein
+        // Default protein selection
         salmonRadio.setChecked(true);
 
-        // 3) listeners for recalculation
+        // 3) Setup listeners for recalculating price
         AdapterView.OnItemSelectedListener recalcListener = new AdapterView.OnItemSelectedListener() {
             @Override public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) { updatePrice(); }
             @Override public void onNothingSelected(AdapterView<?> parent) {}
@@ -88,19 +101,22 @@ public class SandwichesActivity extends AppCompatActivity {
         avocadoCheck.setOnCheckedChangeListener((btn, chk) -> updatePrice());
         cheeseCheck.setOnCheckedChangeListener((btn, chk) -> updatePrice());
 
-        // buttons
+        // Setup button actions
         addToOrderButton.setOnClickListener(v -> confirmAddToOrder());
         comboButton.setOnClickListener(v -> openCombo());
         mainMenuButton.setOnClickListener(v -> finish());
 
-        // make price non-editable
+        // Disable editing price field
         priceEditText.setFocusable(false);
         priceEditText.setClickable(false);
 
-        // initial price
+        // Initial price calculation
         updatePrice();
     }
 
+    /**
+     * Updates the displayed price based on the current sandwich selections.
+     */
     private void updatePrice() {
         Sandwich s = buildSandwich();
         if (s == null) return;
@@ -109,17 +125,22 @@ public class SandwichesActivity extends AppCompatActivity {
         Log.d(TAG, "Built sandwich=" + s + "  price=" + p);
     }
 
+    /**
+     * Constructs a Sandwich object based on the user's selections.
+     *
+     * @return the built Sandwich object
+     */
     private Sandwich buildSandwich() {
-        // bread
+        // Bread selection
         String breadVal = breadSpinner.getSelectedItem().toString();
         Bread bread = Bread.valueOf(breadVal.toUpperCase());
 
-        // protein
+        // Protein selection
         Protein protein = salmonRadio.isChecked() ? Protein.SALMON
                 : roastBeefRadio.isChecked() ? Protein.ROAST_BEEF
                 : Protein.CHICKEN;
 
-        // add-ons
+        // Add-ons selection
         ArrayList<AddOns> addons = new ArrayList<>();
         if (lettuceCheck.isChecked())   addons.add(AddOns.LETTUCE);
         if (tomatoesCheck.isChecked())  addons.add(AddOns.TOMATOES);
@@ -127,7 +148,7 @@ public class SandwichesActivity extends AppCompatActivity {
         if (avocadoCheck.isChecked())   addons.add(AddOns.AVOCADO);
         if (cheeseCheck.isChecked())    addons.add(AddOns.CHEESE);
 
-        // quantity
+        // Quantity selection
         String qtyStr = quantitySpinner.getSelectedItem().toString();
         int qty = Integer.parseInt(qtyStr);
         Log.d(TAG, "Qty picked = " + qty);
@@ -135,6 +156,9 @@ public class SandwichesActivity extends AppCompatActivity {
         return new Sandwich(bread, protein, addons, qty);
     }
 
+    /**
+     * Shows a confirmation dialog to add the current sandwich to the cart.
+     */
     private void confirmAddToOrder() {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm")
@@ -148,6 +172,9 @@ public class SandwichesActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Opens the ComboActivity, passing the current sandwich for combo customization.
+     */
     private void openCombo() {
         Sandwich s = buildSandwich();
         Intent i = new Intent(this, ComboActivity.class);
