@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main_2"
+    tools:context=".SandwichActivity"> <View
+        android:id="@+id/header_background_view_sandwich"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/header_background_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/header_title_sandwich" />
+
+    <ImageView
+        android:id="@+id/header_icon_sandwich"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/header_sandwich_icon_desc"
+        android:src="@drawable/sandwich"  app:layout_constraintStart_toStartOf="@id/header_background_view_sandwich"
+        app:layout_constraintTop_toTopOf="@id/header_background_view_sandwich"
+        app:layout_constraintBottom_toBottomOf="@id/header_background_view_sandwich" />
+
+    <TextView
+        android:id="@+id/header_title_sandwich"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/header_sandwiches"
+        android:textColor="@color/header_text_color_2"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@id/header_background_view_sandwich"
+        app:layout_constraintStart_toEndOf="@id/header_icon_sandwich"
+        app:layout_constraintTop_toTopOf="@id/header_icon_sandwich"
+        app:layout_constraintBottom_toBottomOf="@id/header_icon_sandwich" />
+
+    <TextView
+        android:id="@+id/label_protein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_protein"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_background_view_sandwich" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_protein"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/label_protein"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/label_protein"
+        app:layout_constraintTop_toTopOf="@id/label_protein">
+
+        <RadioButton
+            android:id="@+id/radio_roastbeef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/protein_roastbeef" />
+
+        <RadioButton
+            android:id="@+id/radio_salmon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/protein_salmon" />
+
+        <RadioButton
+            android:id="@+id/radio_chicken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/protein_chicken" />
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/label_bread_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_bread"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_protein"
+        app:layout_constraintTop_toBottomOf="@id/label_protein" />
+
+
+    <Spinner
+        android:id="@+id/spinner_bread"
+        android:layout_width="164dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:entries="@array/sandwich_bread_options"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@id/label_bread_sandwich"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toEndOf="@id/label_bread_sandwich"
+        app:layout_constraintTop_toTopOf="@id/label_bread_sandwich"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <TextView
+        android:id="@+id/label_addon_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_addon"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_bread_sandwich"
+        app:layout_constraintTop_toBottomOf="@id/spinner_bread" /> <CheckBox
+        android:id="@+id/check_lettuce_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_lettuce"
+        app:layout_constraintStart_toEndOf="@id/label_addon_sandwich"
+        app:layout_constraintTop_toTopOf="@id/label_addon_sandwich" />
+
+    <CheckBox
+        android:id="@+id/check_tomatoes_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_tomatoes"
+        app:layout_constraintStart_toEndOf="@id/check_lettuce_sandwich"
+        app:layout_constraintTop_toTopOf="@id/check_lettuce_sandwich" />
+
+    <CheckBox
+        android:id="@+id/check_onion_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_onion"
+        app:layout_constraintStart_toEndOf="@id/check_tomatoes_sandwich"
+        app:layout_constraintTop_toTopOf="@id/check_tomatoes_sandwich" />
+
+    <CheckBox
+        android:id="@+id/check_avocado_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/addon_avocado"
+        app:layout_constraintStart_toStartOf="@id/check_lettuce_sandwich"
+        app:layout_constraintTop_toBottomOf="@id/check_lettuce_sandwich" />
+
+    <CheckBox
+        android:id="@+id/check_cheese_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addon_cheese"
+        app:layout_constraintTop_toTopOf="@id/check_avocado_sandwich"
+        app:layout_constraintStart_toStartOf="@id/check_tomatoes_sandwich" />
+
+
+    <TextView
+        android:id="@+id/label_quantity_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_quantity"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_addon_sandwich"
+        app:layout_constraintTop_toBottomOf="@id/check_avocado_sandwich" /> <Spinner
+        android:id="@+id/spinner_quantity_sandwich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:entries="@array/quantity_options" android:minWidth="80dp"
+        android:minHeight="48dp" app:layout_constraintBottom_toBottomOf="@id/label_quantity_sandwich"
+        app:layout_constraintStart_toEndOf="@id/label_quantity_sandwich"
+        app:layout_constraintTop_toTopOf="@id/label_quantity_sandwich" />
+
+    <Button
+        android:id="@+id/button_main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_main_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar_sandwich"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/header_background_2" android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/button_main_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/label_price_sandwich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/label_price"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif"
+            android:textColor="@android:color/black"/> <EditText
+            android:id="@+id/edittext_price_sandwich"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/price_hint"
+            android:inputType="none"
+            android:minWidth="80dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button_add_to_order_sandwich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_add_to_order" />
+
+        <Button
+            android:id="@+id/button_combo_sandwich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_combo" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

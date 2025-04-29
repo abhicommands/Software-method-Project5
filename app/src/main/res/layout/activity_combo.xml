@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_combo"
+    tools:context=".ComboActivity"> <View
+        android:id="@+id/header_background_combo"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@color/combo_accent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/header_title_combo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/header_combo"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/header_background_combo"
+        app:layout_constraintBottom_toBottomOf="@id/header_background_combo"
+        app:layout_constraintStart_toStartOf="@id/header_background_combo"
+        app:layout_constraintEnd_toEndOf="@id/header_background_combo" />
+
+    <TextView
+        android:id="@+id/label_sandwich_combo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_sandwich"
+        android:textColor="@color/combo_accent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_background_combo" />
+
+    <EditText
+        android:id="@+id/edittext_selected_sandwich"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:hint="@string/hint_selected_sandwich"
+        android:inputType="none"
+        android:minHeight="48dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_sandwich_combo"
+        app:layout_constraintStart_toEndOf="@id/label_sandwich_combo"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/label_choose_side"
+        android:layout_width="92dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_choose_side"
+        android:textColor="@color/combo_accent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_selected_sandwich" />
+
+    <Spinner
+        android:id="@+id/spinner_side"
+        android:layout_width="129dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/combo_side_options"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@id/label_choose_side"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_combo_image"
+        app:layout_constraintStart_toEndOf="@id/label_choose_side"
+        app:layout_constraintTop_toTopOf="@id/label_choose_side" />
+
+    <ImageView
+        android:id="@+id/imageview_side"
+        android:layout_width="114dp"
+        android:layout_height="112dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/content_desc_side_image"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_combo_image"
+        app:layout_constraintTop_toTopOf="@id/spinner_side"
+        tools:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <TextView
+        android:id="@+id/label_choose_drink"
+        android:layout_width="74dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_choose_drink"
+        android:textColor="@color/combo_accent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_side" />
+
+    <Spinner
+        android:id="@+id/spinner_drink"
+        android:layout_width="136dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/combo_drink_options"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@id/label_choose_drink"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_combo_image"
+        app:layout_constraintStart_toEndOf="@id/label_choose_drink"
+        app:layout_constraintTop_toTopOf="@id/label_choose_drink" />
+
+    <ImageView
+        android:id="@+id/imageview_drink"
+        android:layout_width="118dp"
+        android:layout_height="106dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/content_desc_drink_image"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@id/spinner_drink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline_combo_image"
+        app:layout_constraintTop_toTopOf="@id/spinner_drink"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_combo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" /> <Button
+        android:id="@+id/button_main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/button_background_light_gray"
+        android:text="@string/button_main_menu"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar_combo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/combo_accent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/button_main_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/label_quantity_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/label_quantity"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_quantity_combo"
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/white"
+            android:entries="@array/quantity_options"
+            android:minWidth="60dp"
+            android:minHeight="48dp"
+            android:popupBackground="@color/white" />
+
+        <TextView
+            android:id="@+id/label_price_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/label_price"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edittext_price_combo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/price_hint"
+            android:inputType="none"
+            android:minWidth="70dp"
+            android:minHeight="48dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@android:color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button_add_to_order_combo"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/button_background_light_gray"
+            android:text="@string/button_add_to_order"
+            android:textColor="@color/button_text_combo_add"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

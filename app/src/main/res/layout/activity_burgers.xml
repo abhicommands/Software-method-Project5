@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main"
+    tools:context=".BurgersActivity">
+
+        <View
+        android:id="@+id/header_background_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/header_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/header_title" /> 
+        <ImageView
+        android:id="@+id/header_icon"
+        android:layout_width="48dp"  
+        android:layout_height="48dp" 
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/header_burgers" 
+        android:src="@drawable/burger" 
+        app:layout_constraintStart_toStartOf="@id/header_background_view"
+        app:layout_constraintTop_toTopOf="@id/header_background_view"
+        app:layout_constraintBottom_toBottomOf="@id/header_background_view" />
+        <TextView
+        android:id="@+id/header_title"
+        android:layout_width="0dp"  
+        android:layout_height="wrap_content" 
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical"
+        android:paddingTop="16dp"      
+        android:paddingBottom="16dp"   
+        android:text="@string/header_burgers"
+        android:textColor="@color/header_text_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@id/header_background_view"
+        app:layout_constraintStart_toEndOf="@id/header_icon"
+        app:layout_constraintTop_toTopOf="@id/header_icon"    
+        app:layout_constraintBottom_toBottomOf="@id/header_icon" />
+        <TextView
+        android:id="@+id/label_patty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_patty"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_background_view" />
+         
+        <RadioGroup
+            android:id="@+id/radioGroup_patty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/label_patty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/label_patty"
+            app:layout_constraintTop_toTopOf="@id/label_patty">
+            <RadioButton
+                android:id="@+id/radio_single"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/patty_single" />
+
+            <RadioButton
+                android:id="@+id/radio_double"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patty_double" />
+        </RadioGroup>
+
+    <TextView
+        android:id="@+id/label_bread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_bread"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_patty"
+        app:layout_constraintTop_toBottomOf="@id/label_patty" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_bread"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/label_bread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/label_bread"
+        app:layout_constraintTop_toTopOf="@id/label_bread">
+
+        <RadioButton
+            android:id="@+id/radio_brioche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/bread_brioche" />
+
+        <RadioButton
+            android:id="@+id/radio_wheat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/bread_wheat" />
+
+        <RadioButton
+            android:id="@+id/radio_pretzel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bread_pretzel" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/label_addon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_addon"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_bread"
+        app:layout_constraintTop_toBottomOf="@id/label_bread" />
+
+    <CheckBox
+        android:id="@+id/check_lettuce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_lettuce"
+        app:layout_constraintStart_toEndOf="@id/label_addon"
+        app:layout_constraintTop_toTopOf="@id/label_addon" />
+
+    <CheckBox
+        android:id="@+id/check_onions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_onions"
+        app:layout_constraintStart_toEndOf="@id/check_lettuce"
+        app:layout_constraintTop_toTopOf="@id/check_lettuce" />
+
+    <CheckBox
+        android:id="@+id/check_tomatoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/addon_tomatoes"
+        app:layout_constraintStart_toEndOf="@id/check_onions"
+        app:layout_constraintTop_toTopOf="@id/check_onions" />
+
+    <CheckBox
+        android:id="@+id/check_avocadoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/addon_avocadoes"
+        app:layout_constraintStart_toStartOf="@id/check_lettuce"
+        app:layout_constraintTop_toBottomOf="@id/check_lettuce" />
+
+
+    <CheckBox
+        android:id="@+id/check_cheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addon_cheese"
+        app:layout_constraintTop_toTopOf="@id/check_avocadoes"
+        app:layout_constraintStart_toStartOf="@id/check_onions"
+        android:layout_marginStart="0dp"
+        tools:layout_editor_absoluteX="182dp" /> <TextView
+        android:id="@+id/label_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_quantity"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintStart_toStartOf="@id/label_addon"
+        app:layout_constraintTop_toBottomOf="@id/check_avocadoes" />
+
+    <Spinner
+        android:id="@+id/spinner_quantity"
+        android:layout_width="wrap_content"      
+        android:layout_height="wrap_content"     
+        android:layout_marginStart="16dp"
+        android:entries="@array/quantity_options"
+        android:minWidth="80dp"
+        app:layout_constraintBottom_toBottomOf="@id/label_quantity"
+        app:layout_constraintStart_toEndOf="@id/label_quantity"
+        app:layout_constraintTop_toTopOf="@id/label_quantity" />
+        <Button
+        android:id="@+id/button_main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_main_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@color/header_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/button_main_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/label_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/label_price"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif" />
+
+        <EditText
+            android:id="@+id/edittext_price"
+            android:layout_width="0dp"      
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/price_hint"
+            android:inputType="none"
+            android:minWidth="80dp"      
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+            <Button
+            android:id="@+id/button_add_to_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_add_to_order" />
+
+        <Button
+            android:id="@+id/button_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_combo" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

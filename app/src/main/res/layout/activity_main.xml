@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#91e692">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/burger"
+        android:contentDescription="@string/logo_desc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="32sp"
+        android:textColor="#43248a"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toTopOf="@id/logoImage"
+        app:layout_constraintBottom_toBottomOf="@id/logoImage"
+        app:layout_constraintStart_toEndOf="@id/logoImage"
+        app:layout_constraintEnd_toStartOf="@id/openCart"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Cart -->
+    <ImageButton
+        android:id="@+id/openCart"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/cart"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/cart_desc"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="@id/logoImage"
+        app:layout_constraintBottom_toBottomOf="@id/logoImage"
+        app:layout_constraintEnd_toStartOf="@+id/openOrders"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Orders -->
+    <ImageButton
+        android:id="@+id/openOrders"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/reciept"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/orders_desc"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="@id/logoImage"
+        app:layout_constraintBottom_toBottomOf="@id/logoImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/header_bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_center_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Order Burgers -->
+    <LinearLayout
+        android:id="@+id/orderBurgers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/header_bottom_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:layout_width="169dp"
+            android:layout_height="143dp"
+            android:contentDescription="@string/burgers"
+            android:src="@drawable/burger2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/burgers"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Order Sandwiches -->
+    <LinearLayout
+        android:id="@+id/orderSandwiches"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/header_bottom_guideline"
+        app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:layout_width="159dp"
+            android:layout_height="145dp"
+            android:contentDescription="@string/sandwiches"
+            android:src="@drawable/sandwich" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sandwiches"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Order Beverages -->
+    <LinearLayout
+        android:id="@+id/orderBeverages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/orderBurgers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:layout_width="166dp"
+            android:layout_height="155dp"
+            android:contentDescription="@string/beverages"
+            android:src="@drawable/beverages" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/beverages"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Order Sides -->
+    <LinearLayout
+        android:id="@+id/orderSides"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/orderSandwiches"
+        app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="164dp"
+            android:contentDescription="@string/sides"
+            android:src="@drawable/fries" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sides"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

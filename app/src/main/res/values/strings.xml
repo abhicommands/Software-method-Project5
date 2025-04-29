@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">RUBurger</string>
+    <string name="logo_desc">Burger logo</string>
+    <string name="cart_desc">Open cart</string>
+    <string name="header_burgers">Burgers</string>
+    <string name="orders_desc">View orders</string>
+    <string name="burgers">Burgers</string>
+    <string name="sandwiches">Sandwiches</string>
+    <string name="beverages">Beverages</string>
+    <string name="sides">Sides</string>
+    <string name="label_patty">Patty</string>
+    <string name="patty_single">Single</string>
+    <string name="patty_double">Double</string>
+    <string name="label_bread">Bread</string>
+    <string name="bread_brioche">Brioche</string>
+    <string name="bread_wheat">Wheat</string>
+    <string name="bread_pretzel">Pretzel</string>
+    <string name="label_addon">Add-on</string>
+    <string name="addon_lettuce">Lettuce</string>
+    <string name="addon_onions">Onions</string>
+    <string name="addon_tomatoes">Tomatoes</string>
+    <string name="addon_avocadoes">Avocadoes</string>
+    <string name="addon_cheese">Cheese</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_price">Price:</string>
+    <string name="price_hint">$0.00</string>
+    <string name="button_add_to_order">Add to Order</string>
+    <string name="button_combo">Combo</string>
+    <string name="button_main_menu">Main Menu</string>
+    <string name="add_to_order_success_toast">Burger added to order!</string>
+    <string name="dialog_confirm_title">Confirm Order</string>
+    <string name="dialog_confirm_message">Are you sure you want to add this to your order?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="price_error_placeholder">Order placed!</string>
+    <string name="header_sandwiches">Sandwiches</string>
+    <string name="label_protein">Protein</string>
+    <string name="protein_roastbeef">Roast Beef</string>
+    <string name="protein_salmon">Salmon</string>
+    <string name="protein_chicken">Chicken</string>
+    <string name="addon_onion">Onion</string> <string name="addon_avocado">Avocado</string> <string name="header_sandwich_icon_desc">Sandwich icon</string>
+    <string name="add_to_order_success_toast_sandwich">Sandwich added to order!</string>
+    <string-array name="sandwich_bread_options">
+        <item>Brioche</item>
+        <item>Wheat</item>
+        <item>Pretzel</item>
+        <item>Bagel</item>
+        <item>Sourdough</item>
+    </string-array>
+    <string-array name="quantity_options">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="header_combo">Combo</string>
+    <string name="label_sandwich">Sandwich:</string>
+    <string name="hint_selected_sandwich">Selected sandwich details appear here</string>
+    <string name="label_choose_side">Choose a side</string>
+    <string name="label_choose_drink">Choose a drink</string>
+    <string name="content_desc_side_image">Image of selected side</string>
+    <string name="content_desc_drink_image">Image of selected drink</string>
+    <string name="add_to_order_success_toast_combo">Combo added to order!</string>
+
+    <string-array name="combo_side_options">
+        <item>Chips</item>
+        <item>Apple Slices</item>
+    </string-array>
+    <string-array name="combo_drink_options">
+        <item>Cola</item>
+        <item>Tea</item>
+        <item>Juice</item>
+    </string-array>
+
+    <string name="header_current_order">Current Order</string>
+    <string name="label_sub_total">Sub-total:</string>
+    <string name="label_sales_tax">Sales Tax (6.625%):</string> <string name="label_total_amount">Total Amount:</string>
+    <string name="button_remove_item">Remove Selected Item</string>
+    <string name="button_place_order">Place Order</string>
+    <string name="content_desc_cart_list">List of items in your order</string>
+    <string name="cart_empty_message">Your cart is empty.</string>
+    <string name="place_order_success_toast">Order placed successfully!</string>
+    <string name="remove_item_confirm_title">Remove Item</string>
+    <string name="remove_item_confirm_message">Are you sure you want to remove the selected item?</string>
+    <string name="remove_item_select_prompt">Please select an item to remove.</string>
+
+
+    <string name="header_orders_placed">Orders Placed</string>
+    <string name="label_total_amount_orders">Total Amount</string> <string name="button_cancel_order">Cancel Order</string>
+    <string name="button_export_orders">Export Orders</string>
+    <string name="order_number_prompt">Select Order</string> <string name="content_desc_order_items_list">List of items in the selected order</string>
+
+    <string name="header_beverages">Beverages</string>
+    <string name="content_desc_beverage_icon">Beverage icon</string>
+    <string name="label_flavor">Flavor</string>
+    <string name="label_size">Size</string>
+    <string name="label_quantity_beverage">Quantity</string> <string name="label_price_beverage">Price</string>      <string name="button_add_to_order_beverage">Add to Order</string> <string name="content_desc_flavor_list">List of available beverage flavors</string>
+    <string name="size_prompt">Select Size</string>         <string name="quantity_prompt">Select Quantity</string> <string name="add_to_order_success_toast_beverage">Beverage added to order!</string> <string-array name="beverage_size_options">
+    <item>Small</item>
+    <item>Medium</item>
+    <item>Large</item>
+</string-array>
+    <string name="header_sides">Sides</string>
+    <string name="content_desc_sides_icon">Sides icon (fries)</string>
+    <string name="label_size_sides">Size</string>
+    <string name="label_quantity_sides">Quantity</string>
+    <string name="label_price_sides">Price</string>
+    <string name="button_add_to_order_sides">Add to Order</string>
+    <string name="side_prompt">Select Side</string>
+    <string name="size_prompt_sides">Select Size</string>
+    <string name="quantity_prompt_sides">Select Quantity</string>
+    <string name="add_to_order_success_toast_sides">Side added to order!</string>
+    <string-array name="sides_options">
+        <item>Fries</item>
+        <item>Onion Rings</item>
+        <item>Salad</item>
+        <item>Apple Slices</item>
+    </string-array>
+    <string-array name="sides_size_options">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+</resources>

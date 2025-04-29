@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_cart"
+    tools:context=".CartActivity"> <TextView
+        android:id="@+id/header_title_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/header_current_order"
+        android:textColor="@color/text_color_cart_header"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_sub_total"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_subtotal"
+        app:layout_constraintTop_toBottomOf="@id/header_title_cart" />
+
+    <EditText
+        android:id="@+id/edittext_subtotal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/white"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="end"
+        android:hint="@string/price_hint"
+        android:inputType="none"
+        android:minHeight="40dp"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_subtotal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/label_sales_tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/label_sales_tax"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_sales_tax"
+        app:layout_constraintTop_toBottomOf="@id/edittext_subtotal" />
+
+    <EditText
+        android:id="@+id/edittext_sales_tax"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/white"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="end"
+        android:hint="@string/price_hint"
+        android:inputType="none"
+        android:minHeight="40dp"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_sales_tax"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/label_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/label_total_amount"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_total"
+        app:layout_constraintTop_toBottomOf="@id/edittext_sales_tax" />
+
+    <EditText
+        android:id="@+id/edittext_total"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/white"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="end"
+        android:hint="@string/price_hint"
+        android:inputType="none"
+        android:minHeight="40dp"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_total_amount"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_cart_items"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/white"
+        android:contentDescription="@string/content_desc_cart_list"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/button_remove_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_total"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <TextView
+        android:id="@+id/textview_cart_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cart_empty_message"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerview_cart_items"
+        app:layout_constraintEnd_toEndOf="@id/recyclerview_cart_items"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@id/recyclerview_cart_items"
+        app:layout_constraintTop_toTopOf="@id/recyclerview_cart_items"
+        app:layout_constraintVertical_bias="0.505"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/button_remove_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/button_background_cart_action"
+        android:text="@string/button_remove_item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/button_main_menu"
+        app:layout_constraintEnd_toStartOf="@+id/button_place_order"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_place_order"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/button_background_cart_action"
+        android:text="@string/button_place_order"
+        android:textColor="@android:color/black"
+        app:layout_constraintBaseline_toBaselineOf="@id/button_remove_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_remove_item" />
+
+    <Button
+        android:id="@+id/button_main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/button_background_cart_main_menu"
+        android:text="@string/button_main_menu"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

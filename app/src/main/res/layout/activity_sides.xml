@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_sides"
+    android:padding="16dp"
+    tools:context=".controller.SidesActivity"> <TextView
+        android:id="@+id/tvSidesHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/header_sides"
+        android:textColor="@color/text_color_beverage_header"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivSidesIcon"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/content_desc_sides_icon"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSidesHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSidesHeader"
+        app:srcCompat="@drawable/fries" /> <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_spinner_start_sides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" /> <TextView
+        android:id="@+id/tvChooseSideLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/label_choose_side"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSide"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_spinner_start_sides"
+        app:layout_constraintTop_toTopOf="@+id/spinnerSide"
+        app:layout_constraintTop_toBottomOf="@+id/ivSidesIcon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinnerSide"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="24dp"
+        android:prompt="@string/side_prompt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_spinner_start_sides"
+        app:layout_constraintTop_toBottomOf="@id/ivSidesIcon" />
+        <TextView
+        android:id="@+id/tvSizeLabelSides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/label_size_sides"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSizeSides"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_spinner_start_sides"
+        app:layout_constraintTop_toTopOf="@+id/spinnerSizeSides" />
+
+    <Spinner
+        android:id="@+id/spinnerSizeSides"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:prompt="@string/size_prompt_sides"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSide"
+        app:layout_constraintStart_toStartOf="@+id/spinnerSide"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSide" />
+        <TextView
+        android:id="@+id/tvQuantityLabelSides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/label_quantity_sides"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerQuantitySides"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_spinner_start_sides"
+        app:layout_constraintTop_toTopOf="@+id/spinnerQuantitySides" />
+
+    <Spinner
+        android:id="@+id/spinnerQuantitySides"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:prompt="@string/quantity_prompt_sides"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSizeSides"
+        app:layout_constraintStart_toStartOf="@+id/spinnerSizeSides"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSizeSides" />
+         <TextView
+        android:id="@+id/tvPriceLabelSides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/label_price_sides"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPriceSides"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_spinner_start_sides"
+        app:layout_constraintTop_toTopOf="@+id/tvPriceSides"
+        app:layout_constraintTop_toBottomOf="@id/spinnerQuantitySides" />
+
+    <TextView
+        android:id="@+id/tvPriceSides"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|end"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="6dp"
+        android:text="@string/price_hint"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/spinnerQuantitySides"
+        app:layout_constraintTop_toBottomOf="@id/spinnerQuantitySides" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddToOrderSides"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/button_add_to_order_sides"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:backgroundTint="@color/button_background_add_order_sides"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPriceSides"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerQuantitySides"
+        app:layout_constraintTop_toTopOf="@+id/tvPriceSides"
+        app:strokeColor="@color/button_border_sides"
+        app:strokeWidth="1.5dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMainMenuSides"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_main_menu"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/button_background_cart_main_menu"
+        app:cornerRadius="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/border_color_grey" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
