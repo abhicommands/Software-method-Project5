@@ -24,7 +24,11 @@ import edu.softmethod.ruburger.model.Order;
 import edu.softmethod.ruburger.model.OrderManager;
 
 /**
- * Activity for viewing all placed orders, canceling orders, and navigating back to main menu.
+ * Activity for viewing, managing, and canceling placed orders.
+ * Displays placed orders in a spinner and shows the selected order's details.
+ * Allows users to cancel an order or return to the main menu.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
  */
 public class OrdersActivity extends AppCompatActivity {
     private Spinner spinnerOrderNumber;
@@ -36,6 +40,12 @@ public class OrdersActivity extends AppCompatActivity {
     private List<Order> placedOrders;
     private OrderItemsAdapter adapter;
 
+    /**
+     * Called when the activity is starting.
+     * Initializes the views, loads placed orders, and sets up event listeners.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +70,7 @@ public class OrdersActivity extends AppCompatActivity {
             orderNumbers.add(o.getNumber());
         }
 
-        // Spinner adapter
+        // Setup Spinner adapter
         ArrayAdapter<Integer> spinnerAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, orderNumbers);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,6 +110,11 @@ public class OrdersActivity extends AppCompatActivity {
         btnMainMenu.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Displays the details of a specific order number, including items and total amount.
+     *
+     * @param orderNumber the number of the order to display
+     */
     private void showOrderDetails(int orderNumber) {
         Order order = getOrderByNumber(orderNumber);
         if (order != null) {
@@ -109,6 +124,12 @@ public class OrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retrieves an Order object by its order number.
+     *
+     * @param number the order number
+     * @return the matching Order, or null if not found
+     */
     private Order getOrderByNumber(int number) {
         for (Order o : OrderManager.getInstance().getPlacedOrders()) {
             if (o.getNumber() == number) return o;
@@ -116,6 +137,10 @@ public class OrdersActivity extends AppCompatActivity {
         return null;
     }
 
+    /**
+     * Refreshes the list of placed orders and updates the spinner and RecyclerView.
+     * Called after canceling an order.
+     */
     private void refreshOrders() {
         placedOrders = new ArrayList<>(OrderManager.getInstance().getPlacedOrders());
         List<Integer> orderNumbers = new ArrayList<>();
@@ -136,10 +161,17 @@ public class OrdersActivity extends AppCompatActivity {
         }
     }
 
-    // RecyclerView Adapter
+    /**
+     * RecyclerView Adapter for displaying the items within a selected order.
+     */
     private class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.ViewHolder> {
         private List<MenuItem> items = new ArrayList<>();
 
+        /**
+         * Sets the list of menu items to display and refreshes the RecyclerView.
+         *
+         * @param newItems the new list of MenuItems
+         */
         void setItems(List<MenuItem> newItems) {
             items = newItems;
             notifyDataSetChanged();
@@ -162,8 +194,17 @@ public class OrdersActivity extends AppCompatActivity {
             return items.size();
         }
 
+        /**
+         * ViewHolder for displaying a single menu item in the RecyclerView.
+         */
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
+
+            /**
+             * Constructs a ViewHolder for an order item.
+             *
+             * @param itemView the view representing the list item
+             */
             ViewHolder(View itemView) {
                 super(itemView);
                 textView = itemView.findViewById(android.R.id.text1);
