@@ -27,6 +27,9 @@ import edu.softmethod.ruburger.model.Size;
 
 /**
  * Activity for selecting and ordering a beverage.
+ * Handles flavor selection, size selection, quantity, price updates, and order placement.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
  */
 public class BeveragesActivity extends AppCompatActivity {
     private RecyclerView rvFlavorList;
@@ -40,6 +43,11 @@ public class BeveragesActivity extends AppCompatActivity {
     private Size selectedSize;
     private int selectedQuantity;
 
+    /**
+     * Initializes the activity, binds UI components, sets up event listeners, and populates spinners.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +133,9 @@ public class BeveragesActivity extends AppCompatActivity {
         updatePrice();
     }
 
+    /**
+     * Updates the displayed price of the beverage based on selected size, flavor, and quantity.
+     */
     private void updatePrice() {
         if (selectedFlavor == null) {
             tvPriceBeverage.setText("$0.00");
@@ -140,11 +151,18 @@ public class BeveragesActivity extends AppCompatActivity {
         }
     }
 
-    // RecyclerView Adapter for Flavor list
+    /**
+     * RecyclerView Adapter for displaying a list of beverage flavors.
+     */
     private class FlavorAdapter extends RecyclerView.Adapter<FlavorAdapter.ViewHolder> {
         private final List<Flavor> flavors;
         private int selectedPos = RecyclerView.NO_POSITION;
 
+        /**
+         * Constructs a FlavorAdapter with a given list of flavors.
+         *
+         * @param list list of available flavors
+         */
         FlavorAdapter(List<Flavor> list) {
             this.flavors = list;
         }
@@ -168,8 +186,17 @@ public class BeveragesActivity extends AppCompatActivity {
             return flavors.size();
         }
 
+        /**
+         * ViewHolder for displaying each flavor option.
+         */
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView text1;
+
+            /**
+             * Constructs a ViewHolder, sets up click listener for selecting a flavor.
+             *
+             * @param itemView the view for the list item
+             */
             ViewHolder(View itemView) {
                 super(itemView);
                 text1 = itemView.findViewById(android.R.id.text1);
@@ -185,13 +212,22 @@ public class BeveragesActivity extends AppCompatActivity {
         }
     }
 
-    // Simplified listener for spinner items
+    /**
+     * Simplified listener for Spinner items, allowing only index-based handling.
+     */
     private abstract class SimpleItemSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override public void onNothingSelected(AdapterView<?> parent) {}
+
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             onItemSelected(position);
         }
+
+        /**
+         * Called when an item is selected by index.
+         *
+         * @param position the position of the selected item
+         */
         public abstract void onItemSelected(int position);
     }
 }
