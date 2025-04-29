@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 /**
  * MainActivity for RU Burger app.
  * Handles navigation to Burgers, Sandwiches, Beverages, Sides, Cart, and Orders screens.
+ *
  * Authors: Abhinav Acharya, Aditya Rajesh
  */
 public class MainActivity extends AppCompatActivity {
@@ -24,27 +25,45 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton openCart;
     private ImageButton openOrders;
 
+    /**
+     * Called when the activity is starting.
+     * Sets up the main navigation menu and view initialization.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // Handle system bars padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Initialize Views
+        initializeViews();
+        setupListeners();
+    }
+
+    /**
+     * Binds UI elements to their corresponding views in the layout.
+     */
+    private void initializeViews() {
         orderBurgers = findViewById(R.id.orderBurgers);
         orderSandwiches = findViewById(R.id.orderSandwiches);
         orderBeverages = findViewById(R.id.orderBeverages);
         orderSides = findViewById(R.id.orderSides);
         openCart = findViewById(R.id.openCart);
         openOrders = findViewById(R.id.openOrders);
+    }
 
-        // Set click listeners
+    /**
+     * Attaches click listeners to navigation options, launching respective activities.
+     */
+    private void setupListeners() {
         orderBurgers.setOnClickListener(v -> startActivity(new Intent(this, BurgersActivity.class)));
         orderSandwiches.setOnClickListener(v -> startActivity(new Intent(this, SandwichesActivity.class)));
         orderBeverages.setOnClickListener(v -> startActivity(new Intent(this, BeveragesActivity.class)));
