@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/button_background_light_gray"
-        android:text="@string/button_main_menu"
+        android:text="@string/button_main_menu_combo"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
