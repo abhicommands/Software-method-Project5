@@ -29,7 +29,10 @@ import edu.softmethod.ruburger.model.OrderManager;
 
 /**
  * Activity for customizing and ordering burgers.
- * Mirrors SandwichesActivity structure for consistency.
+ * Allows the user to select patty type, bread type, add-ons, quantity, and calculates total price.
+ * Provides options to add to order or proceed to a combo meal.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
  */
 public class BurgersActivity extends AppCompatActivity {
     private static final String TAG = "BurgersActivity";
@@ -46,6 +49,11 @@ public class BurgersActivity extends AppCompatActivity {
 
     private OrderManager orderManager = OrderManager.getInstance();
 
+    /**
+     * Initializes the activity, sets up the view, listeners, and default selections.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,9 @@ public class BurgersActivity extends AppCompatActivity {
         updatePrice();
     }
 
+    /**
+     * Binds all the UI components from the layout to Java objects.
+     */
     private void initializeViews() {
         pattyGroup = findViewById(R.id.radioGroup_patty);
         radioSingle = findViewById(R.id.radio_single);
@@ -91,18 +102,22 @@ public class BurgersActivity extends AppCompatActivity {
         priceEditText.setClickable(false);
     }
 
+    /**
+     * Sets the default selections for patty and bread options.
+     */
     private void setupDefaults() {
-        // Default patty and bread
         radioSingle.setChecked(true);
         radioBrioche.setChecked(true);
     }
 
+    /**
+     * Attaches listeners to UI components for reacting to user interactions.
+     * Updates the burger price accordingly.
+     */
     private void setupListeners() {
-        // Recalculate when patty or bread changes
         pattyGroup.setOnCheckedChangeListener((grp, checkedId) -> updatePrice());
         breadGroup.setOnCheckedChangeListener((grp, checkedId) -> updatePrice());
 
-        // Recalculate when add-ons change
         CompoundButton.OnCheckedChangeListener addOnListener = (btn, isChecked) -> updatePrice();
         checkLettuce.setOnCheckedChangeListener(addOnListener);
         checkTomatoes.setOnCheckedChangeListener(addOnListener);
@@ -110,7 +125,6 @@ public class BurgersActivity extends AppCompatActivity {
         checkAvocadoes.setOnCheckedChangeListener(addOnListener);
         checkCheese.setOnCheckedChangeListener(addOnListener);
 
-        // Recalculate when quantity changes
         quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -124,6 +138,9 @@ public class BurgersActivity extends AppCompatActivity {
         buttonMainMenu.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Recalculates and updates the displayed price based on current burger selections.
+     */
     private void updatePrice() {
         Burger burger = buildBurgerFromSelections();
         if (burger == null) return;
@@ -133,18 +150,20 @@ public class BurgersActivity extends AppCompatActivity {
         Log.d(TAG, "Built burger=" + burger + " price=" + price);
     }
 
+    /**
+     * Builds a Burger object based on the current user selections on the UI.
+     *
+     * @return the constructed Burger object, or null if invalid input
+     */
     private Burger buildBurgerFromSelections() {
-        // Patty count
         boolean isDouble = radioDouble.isChecked();
 
-        // Bread type
         Bread bread;
         int breadId = breadGroup.getCheckedRadioButtonId();
         if (breadId == R.id.radio_wheat) bread = Bread.WHEAT;
         else if (breadId == R.id.radio_pretzel) bread = Bread.PRETZEL;
         else bread = Bread.BRIOCHE;
 
-        // Add-ons
         ArrayList<AddOns> addons = new ArrayList<>();
         if (checkLettuce.isChecked()) addons.add(AddOns.LETTUCE);
         if (checkTomatoes.isChecked()) addons.add(AddOns.TOMATOES);
@@ -152,7 +171,6 @@ public class BurgersActivity extends AppCompatActivity {
         if (checkAvocadoes.isChecked()) addons.add(AddOns.AVOCADO);
         if (checkCheese.isChecked()) addons.add(AddOns.CHEESE);
 
-        // Quantity
         String qtyStr = quantitySpinner.getSelectedItem().toString();
         int qty;
         try {
@@ -166,6 +184,9 @@ public class BurgersActivity extends AppCompatActivity {
         return new Burger(bread, isDouble, addons, qty);
     }
 
+    /**
+     * Shows a confirmation dialog before adding the burger to the current order.
+     */
     private void confirmAddToOrder() {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm")
@@ -178,6 +199,9 @@ public class BurgersActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Opens the ComboActivity, passing the current burger for combo customization.
+     */
     private void openComboPage() {
         Burger burger = buildBurgerFromSelections();
         if (burger == null) {
