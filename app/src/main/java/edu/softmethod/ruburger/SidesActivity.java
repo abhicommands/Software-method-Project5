@@ -20,6 +20,12 @@ import edu.softmethod.ruburger.model.SideType;
 import edu.softmethod.ruburger.model.Size;
 import edu.softmethod.ruburger.model.OrderManager;
 
+/**
+ * Activity for selecting and ordering side items.
+ * Allows users to choose side type, size, quantity, and calculates total price dynamically.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
+ */
 public class SidesActivity extends AppCompatActivity {
     private Spinner spinnerSide;
     private Spinner spinnerSizeSides;
@@ -32,12 +38,18 @@ public class SidesActivity extends AppCompatActivity {
     private Size selectedSize;
     private int selectedQuantity;
 
+    /**
+     * Called when the activity is first created.
+     * Initializes views, populates spinners, sets up listeners, and default selections.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sides);
 
-        // 1) bind views
+        // Bind views
         spinnerSide           = findViewById(R.id.spinnerSide);
         spinnerSizeSides      = findViewById(R.id.spinnerSizeSides);
         spinnerQuantitySides  = findViewById(R.id.spinnerQuantitySides);
@@ -45,7 +57,22 @@ public class SidesActivity extends AppCompatActivity {
         btnAddToOrderSides    = findViewById(R.id.btnAddToOrderSides);
         btnMainMenuSides      = findViewById(R.id.btnMainMenuSides);
 
-        // 2) SideType spinner using enum values
+        setupSideSpinner();
+        setupSizeSpinner();
+        setupQuantitySpinner();
+        setupButtonListeners();
+
+        // Initialize default selections
+        selectedSideType = SideType.FRIES;
+        selectedSize     = Size.SMALL;
+        selectedQuantity = 1;
+        updatePrice();
+    }
+
+    /**
+     * Configures the side type spinner using {@link SideType} enum values.
+     */
+    private void setupSideSpinner() {
         ArrayAdapter<SideType> sideAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -61,8 +88,12 @@ public class SidesActivity extends AppCompatActivity {
             }
             @Override public void onNothingSelected(AdapterView<?> parent) { }
         });
+    }
 
-        // 3) Size spinner using enum values
+    /**
+     * Configures the size spinner using {@link Size} enum values.
+     */
+    private void setupSizeSpinner() {
         ArrayAdapter<Size> sizeAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -78,8 +109,12 @@ public class SidesActivity extends AppCompatActivity {
             }
             @Override public void onNothingSelected(AdapterView<?> parent) { }
         });
+    }
 
-        // 4) Quantity spinner (still string-array or enum)
+    /**
+     * Configures the quantity spinner using a resource array.
+     */
+    private void setupQuantitySpinner() {
         ArrayAdapter<CharSequence> qtyAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.quantity_options,
@@ -99,8 +134,12 @@ public class SidesActivity extends AppCompatActivity {
             }
             @Override public void onNothingSelected(AdapterView<?> parent) { }
         });
+    }
 
-        // 5) “Add to Order” handler (with proper dialog callback)
+    /**
+     * Sets up button listeners for "Add to Order" and "Main Menu" buttons.
+     */
+    private void setupButtonListeners() {
         btnAddToOrderSides.setOnClickListener(v -> {
             if (selectedSideType == null) {
                 Toast.makeText(this, "Please select a side", Toast.LENGTH_SHORT).show();
@@ -122,16 +161,12 @@ public class SidesActivity extends AppCompatActivity {
                     .show();
         });
 
-        // 6) Main menu
         btnMainMenuSides.setOnClickListener(v -> finish());
-
-        // 7) Defaults & initial price
-        selectedSideType = SideType.FRIES;
-        selectedSize     = Size.SMALL;
-        selectedQuantity = 1;
-        updatePrice();
     }
 
+    /**
+     * Updates the displayed price based on the current selections.
+     */
     private void updatePrice() {
         try {
             if (selectedSideType == null) {
