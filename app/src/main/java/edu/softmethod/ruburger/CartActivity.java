@@ -23,7 +23,10 @@ import edu.softmethod.ruburger.model.Order;
 import edu.softmethod.ruburger.model.OrderManager;
 
 /**
- * Activity for viewing and managing the cart.
+ * Activity for viewing, managing, and placing orders from the cart.
+ * Allows users to remove items, view cart total, and place an order.
+ *
+ * Authors: Abhinav Acharya, Aditya Rajesh
  */
 public class CartActivity extends AppCompatActivity {
     private static final String TAG = "CartActivity";
@@ -42,6 +45,12 @@ public class CartActivity extends AppCompatActivity {
     private CartAdapter adapter;
     private int selectedPosition = RecyclerView.NO_POSITION;
 
+    /**
+     * Called when the activity is starting.
+     * Sets up the views, listeners, and loads the cart data.
+     *
+     * @param savedInstanceState previously saved state (if any)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +62,9 @@ public class CartActivity extends AppCompatActivity {
         loadCartItems();
     }
 
+    /**
+     * Initializes view components and makes price fields read-only.
+     */
     private void initializeViews() {
         subtotalEditText    = findViewById(R.id.edittext_subtotal);
         taxEditText         = findViewById(R.id.edittext_sales_tax);
@@ -72,18 +84,27 @@ public class CartActivity extends AppCompatActivity {
         totalEditText.setClickable(false);
     }
 
+    /**
+     * Configures the RecyclerView to display cart items.
+     */
     private void setupRecyclerView() {
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CartAdapter();
         cartRecyclerView.setAdapter(adapter);
     }
 
+    /**
+     * Sets up listeners for the buttons.
+     */
     private void setupListeners() {
         removeItemButton.setOnClickListener(v -> handleRemoveItem());
         placeOrderButton.setOnClickListener(v -> handlePlaceOrder());
         mainMenuButton.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Loads the cart items into the RecyclerView and updates the price fields.
+     */
     private void loadCartItems() {
         currentOrder = OrderManager.getInstance().getCurrentOrder();
         itemList = currentOrder.getItems();
@@ -92,6 +113,9 @@ public class CartActivity extends AppCompatActivity {
         emptyTextView.setVisibility(itemList.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
+    /**
+     * Updates the subtotal, tax, and total price fields.
+     */
     private void updatePriceFields() {
         NumberFormat fmt = NumberFormat.getCurrencyInstance(Locale.US);
         subtotalEditText.setText(fmt.format(currentOrder.getSubtotal()));
@@ -99,6 +123,10 @@ public class CartActivity extends AppCompatActivity {
         totalEditText.setText(fmt.format(currentOrder.getTotal()));
     }
 
+    /**
+     * Handles removing a selected item from the cart.
+     * Displays a message if no item is selected.
+     */
     private void handleRemoveItem() {
         if (selectedPosition == RecyclerView.NO_POSITION) {
             Toast.makeText(this, "Please select an item to remove.", Toast.LENGTH_SHORT).show();
@@ -110,6 +138,9 @@ public class CartActivity extends AppCompatActivity {
         loadCartItems();
     }
 
+    /**
+     * Handles placing the current order after confirmation.
+     */
     private void handlePlaceOrder() {
         if (itemList.isEmpty()) {
             Toast.makeText(this, "Cart is empty! Add something first.", Toast.LENGTH_SHORT).show();
@@ -127,7 +158,9 @@ public class CartActivity extends AppCompatActivity {
                 .show();
     }
 
-    // RecyclerView Adapter & ViewHolder
+    /**
+     * RecyclerView Adapter for displaying the list of cart items.
+     */
     private class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -148,8 +181,17 @@ public class CartActivity extends AppCompatActivity {
             return itemList.size();
         }
 
+        /**
+         * ViewHolder class representing each cart item view.
+         */
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
+
+            /**
+             * Constructs a ViewHolder and sets up item selection handling.
+             *
+             * @param itemView the view representing an item
+             */
             ViewHolder(View itemView) {
                 super(itemView);
                 textView = itemView.findViewById(android.R.id.text1);
