@@ -11,20 +11,6 @@ This project demonstrates basic Android development concepts such as activities,
 - Android Studio
 - Gradle
 
-## Project Structure
-
-Software-method-Project5
-│
-├── app/
-│   └── src/main/
-│       ├── java/        # Java source files
-│       ├── res/         # Layouts and UI resources
-│       └── AndroidManifest.xml
-│
-├── gradle/
-├── gradlew
-└── settings.gradle
-
 ## Running the Project
 
 1. Clone the repository
