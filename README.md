@@ -15,7 +15,9 @@ This project demonstrates basic Android development concepts such as activities,
 
 1. Clone the repository
 
+```bash
 git clone https://github.com/abhicommands/Software-method-Project5.git
+```
 
 2. Open the project in **Android Studio**
 
