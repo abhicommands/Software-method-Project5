@@ -10,19 +10,6 @@ This project demonstrates basic Android development concepts such as activities,
 - Android SDK
 - Android Studio
 - Gradle
-
-## Running the Project
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/abhicommands/Software-method-Project5.git
-```
-
-2. Open the project in **Android Studio**
-
-3. Run the application using an **Android Emulator** or **physical Android device**
-
 ## Academic Integrity / Educational Use
 
 This repository contains coursework developed for the **Software Methods** class.
